@@ -1,10 +1,10 @@
 
-
 var express = require('express'),
   config = require('./config/config'),
   mongoose = require('mongoose'),
   bodyParser  = require("body-parser"),
-  http     = require("http"),
+  methodOverride = require("method-override"),
+  http     = require("http");
 
 var app = express();
 
@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
+var models    = require('./models/users')(app, mongoose);
 var UsersCtrl = require('./controllers/users');
 
 // API routes
