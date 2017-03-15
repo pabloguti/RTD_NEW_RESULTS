@@ -2,11 +2,12 @@
 var express = require('express'),
   config = require('./config/config'),
   mongoose = require('mongoose'),
-  http     = require("http"),
-  io = require('socket.io')(http);
+  http     = require("http");
 
 
 var app = express();
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);
 
 module.exports = require('./config/express')(app, config);
 
