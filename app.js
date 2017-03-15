@@ -20,7 +20,7 @@ server.listen(config.port, function () {
 var io = require('socket.io').listen(server);
 
 //ENDPOINT WEBSOCKETS
-io.on('connection', function(socket){
+io.sockets.on('connection', function(socket){
   io.set('transports', ['websocket']);
   socket.on('question', function(question){
     console.log('Question selected: ' + question.selection);
