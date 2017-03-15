@@ -17,7 +17,7 @@ server.listen(config.port, function () {
   console.log('Express server listening on port ' + config.port);
 });
 
-var io = require('socket.io').listen(server);
+var io = require('socket.io').listen(port);
 
 //ENDPOINT WEBSOCKETS
 io.sockets.on('connection', function(socket){
