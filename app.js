@@ -19,6 +19,7 @@ server.listen(config.port, function () {
 
 //ENDPOINT WEBSOCKETS
 io.on('connection', function(socket){
+  io.set('origins', '*');
   io.set('transports', ['websocket']);
   socket.on('question', function(question){
     console.log('Question selected: ' + question.selection);
