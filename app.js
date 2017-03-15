@@ -8,7 +8,7 @@ var express = require('express'),
 var app = express();
 
 var server = require('http').createServer(app);
-var io = require('socket.io')(server);
+
 var port = process.env.PORT || 3000;
 
 module.exports = require('./config/express')(app, config);
@@ -17,9 +17,10 @@ server.listen(config.port, function () {
   console.log('Express server listening on port ' + config.port);
 });
 
+var io = require('socket.io').listen(server);
+
 //ENDPOINT WEBSOCKETS
 io.on('connection', function(socket){
-  io.set('origins', '*');
   io.set('transports', ['websocket']);
   socket.on('question', function(question){
     console.log('Question selected: ' + question.selection);
