@@ -7,7 +7,7 @@ var express = require('express'),
 
 var app = express();
 
-var io = require('socket.io').listen(3000);
+var io = require('socket.io').listen(80);
 
 module.exports = require('./config/express')(app, config);
 
