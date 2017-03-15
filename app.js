@@ -35,16 +35,6 @@ app.use('/api', usersRoute);
 
 module.exports = require('./config/express')(app, config);
 
-app.use(function (req, res, next) {
-    var hostname = ( req.headers.host.match(/:/g) ) ? req.headers.host.slice( 0, req.headers.host.indexOf(":") ) : req.headers.host;
-    res.setHeader('Access-Control-Allow-Origin', "http://"+hostname);
-    res.header('Access-Control-Allow-Credentials', true);
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    next();
-  }
-);
-
 app.listen(config.port, function () {
   console.log('Express server listening on port ' + config.port);
 });
