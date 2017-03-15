@@ -57,7 +57,7 @@ module.exports = function(app, config) {
 
   app.use(function (req, res, next) {
       var hostname = ( req.headers.host.match(/:/g) ) ? req.headers.host.slice( 0, req.headers.host.indexOf(":") ) : req.headers.host;
-      res.setHeader('Access-Control-Allow-Origin', "http://"+hostname);
+      res.setHeader('Access-Control-Allow-Origin', "http://rtdweb.azurewebsites.net");
       res.header('Access-Control-Allow-Credentials', true);
       res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
       next();
