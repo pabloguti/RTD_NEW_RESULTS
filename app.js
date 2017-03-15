@@ -7,7 +7,9 @@ var express = require('express'),
 
 var app = express();
 
-var io = require('socket.io').listen(80);
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+var port = process.env.PORT || 3000;
 
 module.exports = require('./config/express')(app, config);
 
